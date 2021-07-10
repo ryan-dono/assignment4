@@ -11,6 +11,29 @@ $app->get('/', function ($request,  $response, $args) {
 
     return $response;
 });
+$app->get('/allpic', function  (Request $request, Response $response, array $args) {
+    // $response->getBody()->write("this will return all patients");
+    // return $response;
+
+    $sql = "SELECT * FROM question_4";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->query($sql);
+        $user = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($user);
+    }catch (PDOException $e) {
+        $data = array(
+            "status" => "fail"
+        );
+        echo json_encode($data);
+    }
+});
+
 
 //
 require __DIR__ . '../routes/chat.php';
