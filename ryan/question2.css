@@ -1,0 +1,199 @@
+body{
+    background-color: rgb(18, 11, 61);
+}
+.container{
+    margin: 100px;
+    background-color: rgb(255, 255, 255);
+}
+
+h3{
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+.icons{
+    margin-top: 2px;
+    opacity: 0.5;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    background-color: aqua;
+    color: #000;
+    text-align: center;
+}
+.text{
+    margin: auto;
+    padding-top: 30%;
+}
+.icons:hover{
+opacity: 1;
+}
+.icons-active{
+    border: 1px solid gold;
+    opacity: 1;
+    margin-bottom: 2px;
+}
+
+#chatbox1 , #chatbox2 {
+ display: none;
+position: fixed;
+top: 71%;
+bottom:100%;
+width: 30%;
+}
+
+
+
+#messages2, #messages1{
+    display: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height:250px;
+    height: 250px;
+}
+
+.vert-line{
+  border-left: 6px solid rgba(39, 42, 236, 0.651);
+  height: 60vh;
+  width: 3px;
+}
+ 
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+li.sent{
+    margin: 10px 10px 10px 10px;
+    height: 50px;
+    width:calc(100%-25px);
+    border: 2px solid gray;
+    color: white;
+    clear: both;
+    float: right;
+    background-color: rgb(3, 80, 80);
+}
+li.replies{
+    margin: 10px 10px 10px -28px;
+    height: 50px;
+    width:calc(100%-25px);
+    border: 2px solid gray;
+    color: black;
+    font-weight: 100;
+    clear: both;
+    float: left !important;
+    background-color: rgb(203, 238, 238);
+}
+
+li.replies, li.sent{
+    text-align: justify;
+    min-width: 90px;
+    max-width:fit-content;
+    min-height: 20px;
+    height: auto;
+    width: auto;
+    /* display: inline-block; */
+    border-radius: 15px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+li p{
+    margin: 8px;
+}
+#inputButtons{
+    margin-left: 2px;
+}
+
+
+.sendFile{
+    background-color: red !important;
+}
+
+.sendFile2{
+    background-color: gold !important;
+}
+/* add file form 2 later */
+#file-form1, #file-form2{
+    display: none;
+    color: #000;
+    z-index:99;
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    top: 50%;
+    right: 56%;
+    bottom:100%;
+    width: auto;
+    height: 130px;
+  
+}
+
+#file-form2{ 
+    right: 15% !important;
+}
+.checkmark{
+ 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container-radio{
+    margin-top: 10px;
+    color: white;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .container-radio input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .container-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container-radio .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
