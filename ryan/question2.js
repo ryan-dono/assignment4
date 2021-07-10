@@ -8,7 +8,7 @@ function loadUsersInfo() {
     window.onload = function () {
         $.ajax({
 
-            url: "http://assignment4.test/chat/all",
+            url: "https://www.naviteam.tk/assignment4/chat/all",
             method: 'GET',
             processData: false,
             header: {
@@ -32,7 +32,7 @@ function loadUserChat($id) {
 
     $.ajax({
 
-        url: "http://assignment4.test/chat/" + $id,
+        url: "https://www.naviteam.tk/assignment4/chat/" + $id,
         method: 'GET',
         processData: false,
         header: {
