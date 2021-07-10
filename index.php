@@ -11,10 +11,10 @@ $app->get('/', function ($request,  $response, $args) {
 
     return $response;
 });
-$app->get('/allpic', function  (Request $request, Response $response, array $args) {
+$app->get('/allpic', function ($request,  $response, array $args) {
 
     $sql = "SELECT * FROM question_4";
-    try{
+    try {
         // Get DB Object
         $db = new db();
         // Connect
@@ -24,7 +24,7 @@ $app->get('/allpic', function  (Request $request, Response $response, array $arg
         $user = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         echo json_encode($user);
-    }catch (PDOException $e) {
+    } catch (PDOException $e) {
         $data = array(
             "status" => "fail"
         );
