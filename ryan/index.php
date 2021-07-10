@@ -12,8 +12,6 @@ $app->get('/', function ($request,  $response, $args) {
     return $response;
 });
 $app->get('/allpic', function  (Request $request, Response $response, array $args) {
-    // $response->getBody()->write("this will return all patients");
-    // return $response;
 
     $sql = "SELECT * FROM question_4";
     try{
