@@ -2,37 +2,67 @@
 require 'vendor/autoload.php';
 require 'config/db.php';
 
-
 $app = new \Slim\App;
 
-
+//root
 $app->get('/', function ($request,  $response, $args) {
     $response->getBody()->write("this is the root directory");
 
     return $response;
 });
-$app->get('/allpic', function ($request,  $response, array $args) {
 
-    $sql = "SELECT * FROM question_4";
+//chat
+$app->get('/chat/all', function ($request, $response) {
+    $sql = "SELECT * FROM question2_users";
+
     try {
-        // Get DB Object
-        $db = new db();
-        // Connect
-        $db = $db->connect();
 
-        $stmt = $db->query($sql);
-        $user = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = new db();
+        $conn = $db->connect();
+        $stmt = $conn->query($sql);
+        $users = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($user);
+        $response->getBody()->write(json_encode($users));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
     } catch (PDOException $e) {
-        $data = array(
-            "status" => "fail"
+        $error = array(
+            "message" => $e->getMessage()
         );
-        echo json_encode($data);
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
     }
 });
 
 
-//
-require __DIR__ . '../routes/chat.php';
+$app->get('/chat/{id}', function ($request, $response, $args) {
+    $id = $args['id'];
+    $sql = "SELECT * FROM question2_chat WHERE chat_id = $id";
+
+    try {
+
+        $db = new db();
+        $conn = $db->connect();
+        $stmt = $conn->query($sql);
+        $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        $response->getBody()->write(json_encode($users));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
+    }
+});
+
+//end of chat
 $app->run();
