@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("images/background.jpg");
+}
+
+.my-container{ /* main container*/
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    /*border: 1px solid rgb(68, 161, 68);*/
+}
+.cam-row{ /* webcam row */
+    margin: 10px 0px;
+    height: 100px;
+
+}
+.cam-col{ /* webcam column*/
+    padding: 2px;
+    background-color: black;
+    border: 1px solid grey;
+}
+.mes-col{
+    margin: 10px 0px;
+    padding: 0;
+    height: 40px;
+    border: 1px solid black;
+}
+.vid-part{ /* video streaming part*/
+    margin: 0;
+    height: 410px;
+    width: 100%;
+    padding: 0px 10px;
+    border: 1px solid black;
+}
+.mes-part{ /* Message part*/
+    height: 470px;
+    padding: 0px 30px;
+    border: 1px solid black;
+}
+.bot-part{
+    height: 60px;
+    margin: 10px 0px;
+    /*border: 1px solid black;*/
+}
+.bot-col{
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+.bot-col select option{
+    background-color: transparent;
+}
+video{
+    height: 100%;
+    width: 100%;
+}
+option{
+    text-align: center;
+}
+
+.circle-button{
+    /*color: white;*/
+    color: yellow;
+    background-color: rgb(43, 38, 38, 0.5);
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.circle-button :hover{
+    background-color: grey;
+}

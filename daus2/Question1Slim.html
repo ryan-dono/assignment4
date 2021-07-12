@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    
+
+    <!-- video.css -->
+    <link rel="stylesheet" href="video.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Firdaus: Video Conference</title>
+  </head>
+  <body onload="loadUsers()">
+    <div class="container my-container">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">Navi Team</a>
+          
+            <!-- Links -->
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Audio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Video
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" id="btnPlay">Play</a>
+                  <a class="dropdown-item" href="#" id="btnPause">Pause</a>
+                  <a class="dropdown-item" href="#">Loop</a>
+                </div>
+              </li>
+          
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Database
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="https://www.naviteam.tk/assignment4/video_path">Video DB in Json</a>
+                  <a class="dropdown-item" href="https://www.naviteam.tk/assignment4/participants">Participants DB in JSON</a>
+                  <!-- <a class="dropdown-item" href="#">Tool 3</a> -->
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Add/Delete
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" id="buttonDelete">Delete Firdaus</a>
+                  <a class="dropdown-item" href="#" id="buttonAdd">Add Firdaus</a>
+                  <!-- <div id="buttonDelete">Delete Firdaus div</div> -->
+                  <!-- <a class="dropdown-item" href="#">Tool 3</a> -->
+                </div>
+              </li>
+            </ul>
+        </nav>
+        <div class="row">
+            <div class="col-md-8" style="margin-right: 0;">
+                <div class="row cam-row">
+                    <div class="d-none d-sm-block col-md-3 cam-col">
+                        <!-- x guna <a></a> pun boleh, cuma xde cursor mouse, terus direct dari video -->
+                            <video autoplay muted loop id="play1stwebcam" style="height: 95px; width: 180px;">
+                                <source src="#" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                    </div>
+                    <div class="d-none d-sm-block col-md-3 cam-col">
+                        <!-- guna <a> sbg js -->
+                        <a href="#" id="#">
+                            <video autoplay muted loop id="play2ndwebcam" style="height: 95px; width: 180px;">
+                                <source src="#" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </a>
+                    </div>
+                    <div class="d-none d-sm-block col-md-3 cam-col">
+                        <a href="#" id="#">
+                            <video autoplay muted loop id="play3rdwebcam" style="height: 95px; width: 180;">
+                                <source src="#" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </a>
+                    </div>
+                    <div class="d-none d-sm-block col-md-3 cam-col">
+                        <a href="#" id="#">
+                            <video autoplay muted loop id="play4thwebcam" style="height: 95px; width: 180;">
+                                <source src="#" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </a>
+                    </div>
+                </div>
+				<div class="col-md-12" style="padding: 0; margin: 0;">
+					<div class="row vid-part">
+						<video id="streamVideo" controls autoplay loop muted>
+							<source src="video/1stwebcam.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				</div>
+            </div>
+
+            <div class="d-none d-sm-block col-md-4" style="margin-left: 0;">
+                <div class="row">
+                    <div class="col mes-col">
+                        <button type="button" id="button2" class="btn btn-primary" style="width: 100%;">Participants</button>
+                    </div>
+                    <div class="col mes-col">
+                        <button type="button" id="showMessages" class="btn btn-warning" style="width: 100%;">Add/Delete Participants</button>
+                    </div>
+                </div>
+                <div class="row mes-part" id="users">
+                    <div style="margin: 0%; padding: 0%;">
+                        <br>
+                        <form id="addiForm">
+                            <input type="text" name="name" placeholder="Insert Name" style="background-color: transparent; height: 35px;">
+                            <input type="submit" value="Add" class="btn btn-primary">
+                        </form>
+                        <br>
+                        <form id="delForm">
+                            <input type="text" name="name" placeholder="Insert Name" style="background-color: transparent; height: 35px;">
+                            <input type="submit" value="Delete" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bot-part">
+            <div class="col-md-2 bot-col">
+                <select id="streamVideoSelect" class="from-select" aria-label="Default Select Example" style="width: 100%; background-color: transparent;">
+                    <option value="#" selected>Choose Video</option>
+                    <option id="1stselect" value="#" >1st Video</option>
+                    <option id="2ndselect" value="#" >2nd Video</option>
+                    <option id="3rdselect" value="#" >3rd Video</option>
+                    <option id="4thselect" value="#" >4th Video</option>
+                </select>
+                <button type="button" id="btnChangeVideo" class="btn circle-button" style="width: 100%; height: 60%;"> Change Video </button>
+            </div>
+            <div class="col-md-2 bot-col">
+                <button onclick="btnMuteUnmute()" class="btn circle-button" style="height: 100%; width: 100%;"><i class="fas fa-microphone"></i>Mute/Unmute</button>
+            </div>
+            <div class="col-md-2 bot-col">
+                <button onclick="btnPlayPause()" class="btn circle-button" style="height: 100%; width: 100%;"><i class="fas fa-play"></i> Play / <i class="fas fa-pause"></i> Pause</button>               
+            </div>
+            <div class="col-md-2 bot-col">
+                <button onclick="" class="btn circle-button" style="height: 100%; width: 100%;"><i class="fas fa-upload"></i>Upload File</button>
+            </div>
+            <div class="col-md-2 bot-col">
+                <button onclick="" class="btn circle-button" style="height: 100%; width: 100%;"><i class="far fa-share-square"></i>Share Screen</button>
+            </div>
+            <div class="col-md-2 bot-col">
+                <a href="disconnect.html"><button onclick="" class="btn circle-button" style="height: 100%; width: 100%;"><i class="fas fa-power-off"></i>Disconnect</button></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Bootstrap 4 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="question1slim.js"></script>
+    <!-- No need to use this question1slim2.js, since already use the form created inside question1slim.js -->
+    <!-- this question1slim2.js use only for the question1slim.html file -->
+    <script src="question1slim2.js"></script>
+
+    <!-- Bootstrap 5 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    -->
+</body>
+</html>
